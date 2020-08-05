@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: NamekianUnix
+# Last updated: 8/4/20
+# Purpose: Restarts the network manager so you can use the wifi without having to reboot the machine. Most useful after using airmon-ng to go into monitor mode. Or a fresh install
+
+# This script assumes the following:
+# You're using a Debian based Linux distro
+# You want to connect to wifi, but its not on for some reason
+
+echo "restarting networkmanager"
+systemctl restart network-manager
