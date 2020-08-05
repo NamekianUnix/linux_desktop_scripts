@@ -1,0 +1,16 @@
+#!/bin/bash
+# Author: NamekianUnix
+# Last updated: 8/4/20
+# Purpose: Fully/Automatically update Debian based Linux distros, remove unneeded packages, and clear the APT cache
+
+# This script assumes the following:
+# You're using a Debian based Linux distro
+# You're not using root
+# Your /etc/apt/sources.list for APT is setup correctly for your distro's repositories
+# You are using a solid internet connection
+
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt autoremove -y
+sudo apt autoclean
+sudo apt clean
