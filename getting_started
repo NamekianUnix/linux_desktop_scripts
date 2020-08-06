@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# Author: NamekianUnix
+# Last updated: 8/5/20
+# Purpose: Grabs all the missing programs and updates on a fresh install of Pop_OS
+
+# This script assumes the following:
+# You are using this script on Pop_OS
+# You're on a 64-bit machine
+
+
+# Update everything
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt autoremove -y
+sudo apt autoclean
+sudo apt clean
+
+
+
+############
+#  Gaming  #
+############
+
+# Steam client - For your steam games
+sudo apt install steam -y
+
+# Lutris - A game launcher to help with non-Steam games
+sudo apt install lutris -y
+
+
+
+#########################
+#  Voice/Communication  #
+#########################
+
+# Teamspeak
+sudo add-apt-repository ppa:beardoverflow/ts3client
+sudo apt install ts3client -y
+
+# Discord
+sudo apt install discord -y
+
+# IRC chat client
+sudo apt install hexchat -y
+
+
+
+##############   
+#   Media    #
+##############
+
+# VLC - Media player
+sudo apt install vlc -y
+
+# Audacity - Audio recording and editing
+sudo apt install audacity -y
+
+# Gimp - Free Photoshop variant
+sudo apt install gimp -y
+
+
+
+#################
+#  Development  #
+#################
+
+# Atom - Code editor
+sudo apt install atom -y
+
+# Git Krakken - Git hub respository management
+sudo apt install gitkraken -y
+
+
+
+#################
+#  Linux Tools  #
+#################
+
+# Tilix - Multiple terminals with a single window
+sudo apt install tilix -y
+
+# Conky - Linux system's monitoring tool
+sudo apt install conky -y
+
+# NeoFetch - System information
+sudo apt install neofetch -y
+
+
+
+###########################
+#  Desktop Customization  #
+###########################
+
+# Gnome Tweaks - Desktop environment tweaks to help turn on the maximize and minimize buttons
+# 
+
+sudo apt install gnome-tweaks
+
+
+
+################
+#  Torrenting  #
+################
+
+# Deluge - Torrent client
+sudo apt install deluge -y
+
+
+
+#############
+#  IT work  #
+#############
+
+# Filezilla for FTP - File transfer
+sudo apt install filezilla -y
+
+Teamviewer
+
+
+
+#############
+#  Privacy  #
+#############
+
+# Tor - The onion router browser
+Tor...
+
+# Password manager
+sudo apt install keepassxc -y 
+
+# Meta data cleaner
+sudo apt install mat2 -y
+
+
+
+#################
+#  Maintenance  #
+#################
+
+# Gparted - Partition editor
+sudo apt install gparted -y
+
+# BleachBit - For drive cleanup - Similar to CCleaner
+sudo apt install bleachbit -y
+
+# TimeShift - Backup manager - in case you screw something up and need to restore from a backup
+sudo apt install timeshift -y
+
+
