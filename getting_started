@@ -1,13 +1,33 @@
 #!/bin/bash
 
 # Author: NamekianUnix
-# Last updated: 8/5/20
+# Last updated: 8/8/20
 # Purpose: Grabs all the missing programs and updates on a fresh install of Pop_OS
 
 # This script assumes the following:
-# You are using this script on Pop_OS
+# You are using this script on Pop!_OS
 # You're on a 64-bit machine
+# Using Nvidia GPU
+# You've checked the script and know what you want, and commented out 
 
+
+# Nvidia repo
+sudo add-apt-repository ppa:graphics-drivers/ppa -y
+
+# Wine Repos
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y
+sudo add-apt-repository ppa:lutris-team/lutris -y
+
+# Teamspeak repo
+sudo add-apt-repository ppa:beardoverflow/ts3client
+
+# https://askubuntu.com/questions/13065/how-do-i-fix-the-gpg-error-no-pubkey
+
+# Fixing keyring
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+sudo apt-get update
+sudo apt-get install y-ppa-manager
+y-ppa-manager
 
 # Update everything
 sudo apt update
@@ -17,16 +37,64 @@ sudo apt autoclean
 sudo apt clean
 
 
+# https://unix.stackexchange.com/questions/178881/is-it-good-to-have-multiple-version-of-linux-kernel
+
+# For checking kernels installed
+
+# dpkg -l | egrep "linux-(im|he)"
+
+
 
 ############
 #  Gaming  #
 ############
+
+# Reference
+# https://christitus.com/ultimate-linux-gaming-guide/#gamemode---no-cpu-throttling
+
+# Enable 32-bit libraries
+sudo dpkg --add-architecture i386 
+
+# Nvidia proprietary driver install
+sudo apt install nvidia-driver-450 libnvidia-gl-450 libnvidia-gl-450:i386 libvulkan1 libvulkan1:i386 -y
+
+# Xanmod Kernel install - better performance kernel
+echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+sudo apt update && sudo apt install linux-xanmod -y
+
+# Wine Dependancies and Lutris
+sudo apt-get install --install-recommends winehq-staging -y
+sudo apt-get install libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386 -y
 
 # Steam client - For your steam games
 sudo apt install steam -y
 
 # Lutris - A game launcher to help with non-Steam games
 sudo apt install lutris -y
+
+# Dependencies for Gamemode
+sudo apt install meson libsystemd-dev pkg-config ninja-build git libdbus-1-dev libinih-dev dbus-user-session -y
+
+# Build and install Gamemode - 
+git clone https://github.com/FeralInteractive/gamemode.git
+cd gamemode
+git checkout 1.5.1 # omit to build the master branch
+./bootstrap.sh
+
+#GameMode Usage
+#
+#There are multiple ways to Use GameMode
+#
+#    Lutris - Under settings you can enable GameMode for all games you launch
+#    Steam - Go to Launch options for the game of choice and type in gamemoderun %command%
+#    Terminal - type gamemoderun ./game
+#    Gnome Tool - If you use GNOME Desktop Environment install this extension: https://extensions.gnome.org/extension/1852/gamemode/
+
+# Custom Proton
+cd ~
+wget https://raw.githubusercontent.com/Termuellinator/ProtonUpdater/master/cproton.sh
+sudo chmod +x cproton.sh
+./cproton.sh
 
 
 
@@ -35,7 +103,6 @@ sudo apt install lutris -y
 #########################
 
 # Teamspeak
-sudo add-apt-repository ppa:beardoverflow/ts3client
 sudo apt install ts3client -y
 
 # Discord
@@ -69,8 +136,8 @@ sudo apt install gimp -y
 sudo apt install atom -y
 
 # Git Krakken - Git hub respository management
-sudo apt install gitkraken -y
-
+#sudo apt install gitkraken -y
+# get the .flatpak from the popshop instead
 
 
 #################
@@ -93,7 +160,7 @@ sudo apt install neofetch -y
 ###########################
 
 # Gnome Tweaks - Desktop environment tweaks to help turn on the maximize and minimize buttons
-# 
+# https://extensions.gnome.org/extension/307/dash-to-dock/
 
 sudo apt install gnome-tweaks
 
@@ -115,7 +182,7 @@ sudo apt install deluge -y
 # Filezilla for FTP - File transfer
 sudo apt install filezilla -y
 
-Teamviewer
+#Teamviewer - look it up
 
 
 
@@ -124,7 +191,7 @@ Teamviewer
 #############
 
 # Tor - The onion router browser
-Tor...
+#Use the PopShop
 
 # Password manager
 sudo apt install keepassxc -y 
@@ -146,5 +213,4 @@ sudo apt install bleachbit -y
 
 # TimeShift - Backup manager - in case you screw something up and need to restore from a backup
 sudo apt install timeshift -y
-
 
