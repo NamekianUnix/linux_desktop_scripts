@@ -1,6 +1,6 @@
 # Author: NamekianUnix
 # Last updated: 8/4/23
-# Purpose: Configurable Repo sources.list for Debian Linux 12 Bookworm an onward.
+# Purpose: Configurable Repo sources.list for Debian Linux 12 Bookworm and onward.
 
 ############
 ## STABLE ##
@@ -8,11 +8,14 @@
 # deb http://deb.debian.org/debian stable main contrib non-free non-free-firmware
 # deb-src http://deb.debian.org/debian stable main contrib non-free non-free-firmware
 #
-# deb http://deb.debian.org/debian-security/ stable-security main contrib non-free non-free-firmware
-# deb-src http://deb.debian.org/debian-security/ stable-security main contrib non-free non-free-firmware
+# deb http://security.debian.org/debian-security/ stable-security main contrib non-free non-free-firmware
+# deb-src http://security.debian.org/debian-security/ stable-security main contrib non-free non-free-firmware
 #
 # deb http://deb.debian.org/debian stable-updates main contrib non-free non-free-firmware
 # deb-src http://deb.debian.org/debian stable-updates main contrib non-free non-free-firmware
+#
+# deb http://deb.debian.org/debian stable-proposed-updates main contrib non-free non-free-firmware
+# deb-src http://deb.debian.org/debian stable-proposed-updates main contrib non-free non-free-firmware
 #
 # deb http://deb.debian.org/debian stable-backports main contrib non-free
 # deb-src http://deb.debian.org/debian stable-backports main contrib non-free
@@ -23,6 +26,9 @@
 ##############################################################################################################
 # deb http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 # deb-src http://deb.debian.org/debian testing main contrib non-free non-free-firmware
+#
+# deb http://security.debian.org/debian-security/ testing-security main contrib non-free non-free-firmware
+# deb-src http://security.debian.org/debian-security/ testing-security main contrib non-free non-free-firmware
 ##############################################################################################################
 
 ##############
@@ -32,13 +38,23 @@
 # deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
 ##############################################################################################################
 
+############################################
+## EXPERIMENTAL -- REALLY NOT RECOMMENDED ##
+##############################################################################################################
+# deb http://deb.debian.org/debian experimental main contrib non-free non-free-firmware
+# deb-src http://deb.debian.org/debian experimental main contrib non-free non-free-firmware
+##############################################################################################################
 
-# The latest info can be found here. https://wiki.debian.org/SourcesList
 
-# "main" consists of DFSG-compliant packages(Free software), which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.
-# "contrib" packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).
-# "non-free" contains software that does not comply with the DFSG.
+# The latest info can be found here:
+# https://wiki.debian.org/SourcesList
+# https://www.debian.org/doc/manuals/debian-reference/ch02#_debian_archive_basics
 
+# "main" DFSG compliant(Free Software) and no dependency to non-free
+# "contrib" DFSG compliant but having dependency to non-free
+# "non-free" not DFSG compliant and not in non-free-firmware
+# "non-free-firmware" not DFSG compliant, firmware required for reasonable system installation experience
 
-
+# Using Backports
+# sudo apt-get install -t bookworm-backports package-name
 
